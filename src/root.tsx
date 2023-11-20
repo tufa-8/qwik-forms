@@ -1,13 +1,13 @@
-import { component$, useStyles$ } from "@builder.io/qwik";
+import { CONFIGURATION_TOKEN, Configuration, fetchConfiguration } from "./utils/configuration";
 import {
   QwikCityProvider,
   RouterOutlet,
   ServiceWorkerRegister,
 } from "@builder.io/qwik-city";
+import { component$, useContextProvider, useStore, useStyles$ } from "@builder.io/qwik";
 
-import { RouterHead } from "~/components/common/RouterHead";
 import { DarkThemeLauncher } from "~/components/common/DarkThemeLauncher";
-
+import { RouterHead } from "~/components/common/RouterHead";
 // import "@fontsource-variable/inter";
 import globalStyles from "~/assets/styles/global.css?inline";
 
@@ -20,6 +20,14 @@ export default component$(() => {
    */
 
   useStyles$(globalStyles);
+
+  const configuration = useStore({config:{baseUrl:'derka' } as Configuration} );
+  fetchConfiguration().then((c) => {
+    configuration.config = c;
+  })
+
+  useContextProvider(CONFIGURATION_TOKEN, configuration.config);
+
 
   return (
     <QwikCityProvider>

@@ -1,5 +1,6 @@
-import { component$, useStore } from "@builder.io/qwik";
+import { component$, useContext, useStore } from "@builder.io/qwik";
 
+import { CONFIGURATION_TOKEN } from "~/utils/configuration";
 import Logo from "~/components/common/Logo";
 import ToggleMenu from "~/components/common/ToggleMenu";
 import ToggleTheme from "~/components/common/ToggleTheme";
@@ -8,6 +9,10 @@ export default component$(() => {
   const store = useStore({
     isScrolling: false,
   });
+
+  const configuration = useContext(CONFIGURATION_TOKEN)
+
+  console.log(configuration)
 
 
   return (

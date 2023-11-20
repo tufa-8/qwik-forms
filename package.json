@@ -25,6 +25,7 @@
     "@fontsource-variable/inter": "^5.0.15",
     "@unpic/qwik": "^0.0.30",
     "gray-matter": "^4.0.3",
+    "keycloak-js": "^22.0.5",
     "markdown-it": "^13.0.2",
     "node-fetch": "3.3.2",
     "tailwind-merge": "^2.0.0"
